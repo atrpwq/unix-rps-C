@@ -57,15 +57,15 @@ void main(){
 				break;
 			case('s'):
 				if(random_choice()=='r'){
-					printf("loss");
+					printf("loss\n");
 					score--;
 				}
 				else if(random_choice()=='p'){
-					printf("win");
+					printf("win\n");
 					score++;
 				}
 				else if(random_choice()=='s'){
-					printf("tie");
+					printf("tie\n");
 				}
 				break;
 			case('e'):
