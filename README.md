@@ -1,4 +1,9 @@
 thx for using
 instructions:
-  gcc rps.c -o `name` -lm
+  simple:
+    go to simpleinstall.sh
+    uncomment the package manager for u
+  normal:
+    gcc rps.c -o `name` -lm
+  
   ./`name of executable`
