@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<time.h>
+int score = 0;
 int random_choice(){
 	srand(time(NULL));
 	int choice = rand()%3;
@@ -18,8 +19,21 @@ int random_choice(){
 	}
 	return 0;
 }
+int win(){
+	printf("win\n");
+	score++;
+	return 0;
+}
+int tie(){
+	printf("tie\n");
+	return 0;
+}
+int loss(){
+	printf("loss\n");
+	score--;
+	return 0;
+}
 void main(){
-	int score = 0;
 	while(true){
 		system("clear");
 		if(score<=0){
@@ -31,41 +45,35 @@ void main(){
 		switch(choice){
 			case('r'):
 				if(random_choice()=='r'){
-					printf("tie\n");
+					tie();
 				}
 				else if(random_choice()=='p'){
-					printf("loss\n");
-					score--;
+					loss();
 				}
 				else if(random_choice()=='s'){
-					printf("win\n");
-					score++;
+					win();
 				}
 				break;
 			case('p'):
 				if(random_choice()=='r'){
-					printf("win\n");
-					score++;
+					win();
 				}
 				else if(random_choice()=='p'){
-					printf("tie\n");
+					tie();
 				}
 				else if(random_choice()=='s'){
-					printf("loss\n");
-					score--;
+					loss();
 				}
 				break;
 			case('s'):
 				if(random_choice()=='r'){
-					printf("loss\n");
-					score--;
+					loss();
 				}
 				else if(random_choice()=='p'){
-					printf("win\n");
-					score++;
+					win();
 				}
 				else if(random_choice()=='s'){
-					printf("tie\n");
+					tie();
 				}
 				break;
 			case('e'):
