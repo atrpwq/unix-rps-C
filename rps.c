@@ -4,9 +4,8 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<time.h>
-int score = 0;
+int score,aiscore=0;
 int random_choice(){
-	srand(time(NULL));
 	int choice = rand()%3;
 	if(choice==2){
 		return 'r'; //rock
@@ -22,6 +21,7 @@ int random_choice(){
 int win(){
 	printf("win\n");
 	score++;
+	aiscore--;
 	return 0;
 }
 int tie(){
@@ -31,50 +31,45 @@ int tie(){
 int loss(){
 	printf("loss\n");
 	score--;
+	aiscore++;
+	return 0;
+}
+int chances(char rps,char rps1,char rps2){
+	if(random_choice()==rps){
+		win();
+	}
+	else if(random_choice()==rps1){
+		tie();
+	}
+	else{
+		loss();
+	}
 	return 0;
 }
 void main(){
+	char name[1024];
+	printf("name >> ");fgets(name,1024,stdin);name[strlen(name)-1]='\0';
 	while(true){
+		srand(time(NULL));
 		system("clear");
 		if(score<=0){
 			score=0;
 		}
+		if(aiscore<=0){
+			aiscore=0;
+		}
 		char choice;
-		printf("score: %d",score);
+		printf("%s:%d\tai:%d",name,score,aiscore);
 		printf("\nrock, paper, scissors [r/p/s] >> ");scanf(" %c",&choice);
 		switch(choice){
 			case('r'):
-				if(random_choice()=='r'){
-					tie();
-				}
-				else if(random_choice()=='p'){
-					loss();
-				}
-				else if(random_choice()=='s'){
-					win();
-				}
+				chances('s','r','p');
 				break;
 			case('p'):
-				if(random_choice()=='r'){
-					win();
-				}
-				else if(random_choice()=='p'){
-					tie();
-				}
-				else if(random_choice()=='s'){
-					loss();
-				}
+				chances('r','p','s');
 				break;
 			case('s'):
-				if(random_choice()=='r'){
-					loss();
-				}
-				else if(random_choice()=='p'){
-					win();
-				}
-				else if(random_choice()=='s'){
-					tie();
-				}
+				chances('p','s','r');
 				break;
 			case('e'):
 				exit(1);
