@@ -7,7 +7,7 @@
 int score,aiscore=0;
 int random_choice(){
 	int choice = rand()%3;
-	if(choice==2){
+	if(choice==0){
 		return 'r'; //rock
 	}
 	else if(choice==1){
@@ -18,34 +18,8 @@ int random_choice(){
 	}
 	return 0;
 }
-int win(){
-	printf("win\n");
-	score++;
-	aiscore--;
-	return 0;
-}
-int tie(){
-	printf("tie\n");
-	return 0;
-}
-int loss(){
-	printf("loss\n");
-	score--;
-	aiscore++;
-	return 0;
-}
-int chances(char rps,char rps1,char rps2){
-	if(random_choice()==rps){
-		win();
-	}
-	else if(random_choice()==rps1){
-		tie();
-	}
-	else{
-		loss();
-	}
-	return 0;
-}
+int win(),tie(),loss();
+int chances(char,char,char);
 void main(){
 	char name[1024];
 	printf("name >> ");fgets(name,1024,stdin);name[strlen(name)-1]='\0';
@@ -78,5 +52,32 @@ void main(){
 				break;
 		}
 		sleep(1);
+	}
+}
+int win(){
+	printf("win\n");
+	score++;
+	aiscore--;
+	return 0;
+}
+int tie(){
+	printf("tie\n");
+	return 0;
+}
+int loss(){
+	printf("loss\n");
+	score--;
+	aiscore++;
+	return 0;
+}
+int chances(char rps,char rps1, char rps2){
+	if(random_choice()==rps){
+		win();
+	}
+	else if(random_choice()==rps1){
+		tie();
+	}
+	else{
+		loss();
 	}
 }
