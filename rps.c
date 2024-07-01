@@ -16,7 +16,6 @@ int random_choice(){
 	else{
 		return 's'; //scissors
 	}
-	return 0;
 }
 int win(),tie(),loss();
 int chances(char,char,char);
